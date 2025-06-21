@@ -13,9 +13,9 @@ using System.Numerics;
 using Raylib_cs;
 using static Raylib_cs.Raylib;
 
-namespace RaylibExamples.Core;
+namespace RaylibExamples.Core.Camera3dFree;
 
-public class Camera3dFree
+public class Program
 {
     public static int Example()
     {

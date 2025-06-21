@@ -1,3 +1,10 @@
 <Solution>
-  <Project Path="RaylibExamples/RaylibExamples.csproj" />
+  <Folder Name="/Community/" />
+  <Folder Name="/Community/Core/">
+    <Project Path="Community/Core/RaylibExamples.Core.BasicScreenManager/RaylibExamples.Core.BasicScreenManager.csproj" />
+    <Project Path="Community/Core/RaylibExamples.Core.Camera2dPlatformer/RaylibExamples.Core.Camera2dPlatformer.csproj" />
+    <Project Path="Community/Core/RaylibExamples.Core.Camera3dFree/RaylibExamples.Core.Camera3dFree.csproj" />
+    <Project Path="Community/Core/RaylibExamples.Core.Camera3dMode/RaylibExamples.Core.Camera3dMode.csproj" />
+    <Project Path="Community/Core/RaylibExamples.Core.CustomLogging/RaylibExamples.Core.CustomLogging.csproj" />
+  </Folder>
 </Solution>
