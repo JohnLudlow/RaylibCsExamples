@@ -55,7 +55,7 @@ public class Program
         int height
     );
 
-    public static int Example()
+    public static int Main()
     {
         // Initialization
         //--------------------------------------------------------------------------------------

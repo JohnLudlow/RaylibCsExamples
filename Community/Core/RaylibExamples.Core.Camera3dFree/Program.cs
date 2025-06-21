@@ -17,7 +17,7 @@ namespace RaylibExamples.Core.Camera3dFree;
 
 public class Program
 {
-    public static int Example()
+    public static int Main()
     {
         // Initialization
         //--------------------------------------------------------------------------------------
