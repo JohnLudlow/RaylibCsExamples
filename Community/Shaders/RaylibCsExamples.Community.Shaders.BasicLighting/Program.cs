@@ -12,8 +12,8 @@ public class BasicLighting
 
     public unsafe static int Main()
     {
-        const int screenWidth = 800;
-        const int screenHeight = 450;
+        const int screenWidth = 800 * 2;
+        const int screenHeight = 450 * 2;
 
         Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
         Raylib.InitWindow(screenWidth, screenHeight, "raylib [shaders] example - basic lighting");
@@ -21,7 +21,7 @@ public class BasicLighting
         var camera = new Camera3D()
         {
             Position = new Vector3(2, 4, 6),
-            Target = new Vector3(0, .5f, 6),
+            Target = new Vector3(0, .5f, 0),
             Up = Vector3.UnitY,
             FovY = 45,
             Projection = CameraProjection.Perspective
@@ -47,17 +47,17 @@ public class BasicLighting
         cubeModel.Materials[0].Shader = shader;
 
         var lights = new Light[] {
-            RLights.CreateLight(0, LightType.Point, new Vector3(-2, 1, -2), Vector3.Zero, Color.Yellow  , shader),
-            RLights.CreateLight(1, LightType.Point, new Vector3( 2, 1,  2), Vector3.Zero, Color.Red     , shader),
-            RLights.CreateLight(2, LightType.Point, new Vector3(-2, 1,  2), Vector3.Zero, Color.Green   , shader),
-            RLights.CreateLight(3, LightType.Point, new Vector3( 2, 1, -2), Vector3.Zero, Color.Blue    , shader)
+            RLights.CreateLight(0, LightType.Point, new Vector3(-2, 1f, -2), Vector3.Zero, Color.Yellow, shader),
+            RLights.CreateLight(1, LightType.Point, new Vector3( 2, 1f,  2), Vector3.Zero, Color.Red   , shader),
+            RLights.CreateLight(2, LightType.Point, new Vector3(-2, 1f,  2), Vector3.Zero, Color.Green , shader),
+            RLights.CreateLight(3, LightType.Point, new Vector3( 2, 1f, -2), Vector3.Zero, Color.Blue  , shader)
         };
 
         Raylib.SetTargetFPS(0);
 
         while (!Raylib.WindowShouldClose())
         {
-            Raylib.UpdateCamera(ref camera, CameraMode.FirstPerson);
+            Raylib.UpdateCamera(ref camera, CameraMode.Orbital);
 
             if (Raylib.IsKeyPressed(KeyboardKey.Y))
             {
