@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/Community/" />
+  <Folder Name="/Community/Core/">
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.BasicWindow/RaylibCsExamples.Community.Core.BasicWindow.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.BasicScreenManager/RaylibCsExamples.Community.Core.BasicScreenManager.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.Camera2dDemo/RaylibCsExamples.Community.Core.Camera2dDemo.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.Camera2dPlatformer/RaylibCsExamples.Community.Core.Camera2dPlatformer.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.Camera3dFree/RaylibCsExamples.Community.Core.Camera3dFree.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.Camera3dMode/RaylibCsExamples.Community.Core.Camera3dMode.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.CustomLogging/RaylibCsExamples.Community.Core.CustomLogging.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.Picking3d/RaylibCsExamples.Community.Core.Picking3d.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.SmoothPixelPerfect/RaylibCsExamples.Community.Core.SmoothPixelPerfect.csproj" />
+    <Project Path="Community/Core/RaylibCsExamples.Community.Core.WindowFlags/RaylibCsExamples.Community.Core.WindowFlags.csproj" />
+  </Folder>
+  <Folder Name="/Community/Models/">
+    <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.AnimationDemo/RaylibCsExamples.Community.Core.Models.AnimationDemo.csproj" />
+    <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.CubicmapDemo/RaylibCsExamples.Community.Core.Models.CubicmapDemo.csproj" />
+    <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.SolarSystem/RaylibCsExamples.Community.Core.Models.SolarSystem.csproj" />
+  </Folder>
+  <Folder Name="/Community/Shaders/">
+    <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicLighting/RaylibCsExamples.Community.Shaders.BasicLighting.csproj" />
+  </Folder>
+  <Folder Name="/Local/" />
+  <Folder Name="/Local/Objects/">
+    <Project Path="Local/Objects/RaylibCsExamples.Local.Objects.ObjectOcclusionTest/RaylibCsExamples.Local.Objects.ObjectOcclusionTest.csproj" />
+  </Folder>
+</Solution>
