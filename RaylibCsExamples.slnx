@@ -14,8 +14,14 @@
   </Folder>
   <Folder Name="/Community/Models/">
     <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.AnimationDemo/RaylibCsExamples.Community.Core.Models.AnimationDemo.csproj" />
+    <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.CubicmapDemo/RaylibCsExamples.Community.Core.Models.CubicmapDemo.csproj" />
+    <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.SolarSystem/RaylibCsExamples.Community.Core.Models.SolarSystem.csproj" />
   </Folder>
   <Folder Name="/Community/Shaders/">
     <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicLighting/RaylibCsExamples.Community.Shaders.BasicLighting.csproj" />
+  </Folder>
+  <Folder Name="/Local/" />
+  <Folder Name="/Local/Objects/">
+    <Project Path="Local/Objects/RaylibCsExamples.Local.Objects.ObjectOcclusionTest/RaylibCsExamples.Local.Objects.ObjectOcclusionTest.csproj" />
   </Folder>
 </Solution>
