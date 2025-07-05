@@ -59,13 +59,15 @@ internal sealed unsafe class Program
 
                     Raylib.DrawModel(greenCubeModel, greenCubePosition, 1, Color.Green);
                     Raylib.DrawModelWires(greenCubeModel, greenCubePosition, 1, Color.Green);
-                    greenCubeVisible = IsModelVisible(camera, screenWidth, screenHeight, greenCubeModel);
 
                     Raylib.DrawModel(blueCubeModel, blueCubePosition, 1, Color.Blue);
                     Raylib.DrawModelWires(blueCubeModel, blueCubePosition, 1, Color.Blue);
+
+                    greenCubeVisible = IsModelVisible(camera, screenWidth, screenHeight, greenCubeModel);
                     blueCubeVisible = IsModelVisible(camera, screenWidth, screenHeight, blueCubeModel);
                 }
                 Raylib.EndMode3D();
+
 
                 if (greenCubeVisible)
                 {
