@@ -31,8 +31,9 @@ public class MeshPicking
         var texture = Raylib.LoadTexture("Resources/Models/turret_diffuse.png");
         Raylib.SetMaterialTexture(ref tower, 0, MaterialMapIndex.Albedo, ref texture);
 
-        Vector3 towerPos = new(5.0f, 0.0f, 5.0f);
-        var towerBBox = Raylib.GetMeshBoundingBox(tower.Meshes[0]);
+        tower.Transform = Raymath.MatrixTranslate(5.0f, 0.0f, 5.0f);
+        Vector3 towerPos = Vector3.Zero;
+        var towerBBox = Raylib.GetModelBoundingBox(tower);
 
         // Ground quad
         Vector3 g0 = new(-50.0f, 0.0f, -50.0f);

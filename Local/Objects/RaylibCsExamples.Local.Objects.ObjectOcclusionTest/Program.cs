@@ -118,13 +118,13 @@ internal sealed class Program
             Projection = CameraProjection.Perspective
         };
 
-        var planeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshPlane(20, 20, 3, 3));
+        var planeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshPlane(20, 20, 3, 3));    
 
         var greenCubeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshCube(3, 3, 3));
-        var greenCubePosition = new Vector3(-5, 2, 0);
+        greenCubeModel.Transform = Raymath.MatrixTranslate(-5, 2, 0);
 
         var blueCubeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshCube(3, 3, 3));
-        var blueCubePosition = new Vector3(5, 2, 0);
+        blueCubeModel.Transform = Raymath.MatrixTranslate(5, 2, 0);
 
         Raylib.SetMousePosition(screenWidth / 2, screenHeight / 2);
 
@@ -139,15 +139,15 @@ internal sealed class Program
                     Raylib.DrawModel(planeModel, Vector3.Zero, 1, Color.Gray);
                     Raylib.DrawModelWires(planeModel, Vector3.Zero, 1, Color.LightGray);
 
-                    Raylib.DrawModel(greenCubeModel, greenCubePosition, 1, Color.Green);
-                    Raylib.DrawModelWires(greenCubeModel, greenCubePosition, 1, Color.Black);
+                    Raylib.DrawModel(greenCubeModel, Vector3.Zero, 1, Color.Green);
+                    Raylib.DrawModelWires(greenCubeModel, Vector3.Zero, 1, Color.Black);
 
-                    Raylib.DrawModel(blueCubeModel, blueCubePosition, 1, Color.Blue);
-                    Raylib.DrawModelWires(blueCubeModel, blueCubePosition, 1, Color.Black);
+                    Raylib.DrawModel(blueCubeModel, Vector3.Zero, 1, Color.Blue);
+                    Raylib.DrawModelWires(blueCubeModel, Vector3.Zero, 1, Color.Black);
                 }
                 Raylib.EndMode3D();
 
-                if (IsBoundingBoxVisible(camera, cameraPositions, [(greenCubeModel, greenCubePosition), (blueCubeModel, blueCubePosition)], (greenCubeModel, greenCubePosition), "green cube"))
+                if (IsBoundingBoxVisible(camera, cameraPositions, [greenCubeModel, blueCubeModel], greenCubeModel, "green cube"))
                 {
                     Raylib.DrawText("Green cube is visible", 10, 30, 30, Color.Green);
                     Raylib.TraceLog(TraceLogLevel.All, "Green cube is visible");
@@ -158,13 +158,13 @@ internal sealed class Program
                     Raylib.TraceLog(TraceLogLevel.All, "Green cube is NOT visible");
                 }
 
-                if (IsBoundingBoxHovered(camera, greenCubeModel, greenCubePosition))
+                if (IsBoundingBoxHovered(camera, greenCubeModel))
                 {
                     Raylib.DrawText("Green cube is hovered", 10, 60, 30, Color.DarkGreen);
                     Raylib.TraceLog(TraceLogLevel.All, "Green cube is hovered");
                 }
 
-                if (IsBoundingBoxVisible(camera, cameraPositions, [(greenCubeModel, greenCubePosition), (blueCubeModel, blueCubePosition)], (blueCubeModel, blueCubePosition), "blue cube"))
+                if (IsBoundingBoxVisible(camera, cameraPositions, [greenCubeModel, blueCubeModel], blueCubeModel, "blue cube"))
                 {
                     Raylib.DrawText("Blue cube is visible", 10, 120, 30, Color.Blue);
                     Raylib.TraceLog(TraceLogLevel.All, "Blue cube is visible");
@@ -175,7 +175,7 @@ internal sealed class Program
                     Raylib.TraceLog(TraceLogLevel.All, "Blue cube is NOT visible");
                 }
 
-                if (IsBoundingBoxHovered(camera, blueCubeModel, blueCubePosition))
+                if (IsBoundingBoxHovered(camera, blueCubeModel))
                 {
                     Raylib.DrawText("Blue cube is hovered", 10, 150, 30, Color.DarkBlue);
                     Raylib.TraceLog(TraceLogLevel.All, "Blue cube is hovered");
@@ -193,7 +193,7 @@ internal sealed class Program
         Raylib.CloseWindow();
     }
 
-    private static bool IsBoundingBoxVisible(Camera3D camera, Vector2[] cameraPositions, (Model model, Vector3 position)[] allModels, (Model model, Vector3 position) targetModel, string id)
+    private static bool IsBoundingBoxVisible(Camera3D camera, Vector2[] cameraPositions, Model [] allModels, Model targetModel, string id)
     {
         foreach (var cameraPosition in cameraPositions)
         {
@@ -203,21 +203,18 @@ internal sealed class Program
 
             foreach (var model in allModels)
             {
-                var boundingBox = Raylib.GetModelBoundingBox(model.model);
-                boundingBox.Min += model.position;
-                boundingBox.Max += model.position;
-
+                var boundingBox = Raylib.GetModelBoundingBox(model);
                 var collision = Raylib.GetRayCollisionBox(ray, boundingBox);
 
                 if (collision.Hit && (collision.Distance < closestCollision?.Distance || closestCollision is null))
                 {
                     Raylib.DrawBoundingBox(boundingBox, Color.Purple);
                     closestCollision = collision;
-                    closestModel = model.model;
+                    closestModel = model;
                 }
             }
 
-            if (closestCollision is not null && closestModel.Equals(targetModel.model))
+            if (closestCollision is not null && closestModel.Equals(targetModel))
             {
                 Raylib.TraceLog(TraceLogLevel.All, $"{id} is visible at position {ray.Position} ({closestCollision})");
                 Raylib.DrawText("X", (int)cameraPosition.X, (int)cameraPosition.Y, 10, Color.DarkGreen);
@@ -233,12 +230,10 @@ internal sealed class Program
         return false;
     }
 
-    private static bool IsBoundingBoxHovered(Camera3D camera, Model model, Vector3 position)
+    private static bool IsBoundingBoxHovered(Camera3D camera, Model model)
     {
         var ray = Raylib.GetScreenToWorldRay(Raylib.GetMousePosition(), camera);
         var boundingBox = Raylib.GetModelBoundingBox(model);
-        boundingBox.Min += position;
-        boundingBox.Max += position;
 
         var rayCollision = Raylib.GetRayCollisionBox(ray, boundingBox);
         if (rayCollision.Hit)
