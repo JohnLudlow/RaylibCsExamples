@@ -2,19 +2,112 @@
 using System.Numerics;
 using Raylib_cs;
 
-internal sealed unsafe class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
         const int screenWidth = 800 * 2;
         const int screenHeight = 450 * 2;
 
-
-        Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
         Raylib.InitWindow(screenWidth, screenHeight, "raylib [shaders] example - basic lighting");
         Raylib.SetTargetFPS(30);
 
+        var cameraPositions = new Vector2[] {
+            new (0            , 0           ),
+            new (screenWidth  , 0           ),
+            new (0            , screenHeight),
+            new (screenWidth  , screenHeight),
 
+            new (screenWidth * .1f , screenHeight * .1f ),
+            new (screenWidth * .1f , screenHeight * .2f ),
+            new (screenWidth * .1f , screenHeight * .3f ),
+            new (screenWidth * .1f , screenHeight * .4f ),
+            new (screenWidth * .1f , screenHeight * .5f ),
+            new (screenWidth * .1f , screenHeight * .6f ),
+            new (screenWidth * .1f , screenHeight * .7f ),
+            new (screenWidth * .1f , screenHeight * .8f ),
+            new (screenWidth * .1f , screenHeight * .9f ),
+
+            new (screenWidth * .2f , screenHeight * .1f ),
+            new (screenWidth * .2f , screenHeight * .2f ),
+            new (screenWidth * .2f , screenHeight * .3f ),
+            new (screenWidth * .2f , screenHeight * .4f ),
+            new (screenWidth * .2f , screenHeight * .5f ),
+            new (screenWidth * .2f , screenHeight * .6f ),
+            new (screenWidth * .2f , screenHeight * .7f ),
+            new (screenWidth * .2f , screenHeight * .8f ),
+            new (screenWidth * .2f , screenHeight * .9f ),
+
+            new (screenWidth * .3f , screenHeight * .1f ),
+            new (screenWidth * .3f , screenHeight * .2f ),
+            new (screenWidth * .3f , screenHeight * .3f ),
+            new (screenWidth * .3f , screenHeight * .4f ),
+            new (screenWidth * .3f , screenHeight * .5f ),
+            new (screenWidth * .3f , screenHeight * .6f ),
+            new (screenWidth * .3f , screenHeight * .7f ),
+            new (screenWidth * .3f , screenHeight * .8f ),
+            new (screenWidth * .3f , screenHeight * .9f ),
+
+            new (screenWidth * .4f , screenHeight * .1f ),
+            new (screenWidth * .4f , screenHeight * .2f ),
+            new (screenWidth * .4f , screenHeight * .3f ),
+            new (screenWidth * .4f , screenHeight * .4f ),
+            new (screenWidth * .4f , screenHeight * .5f ),
+            new (screenWidth * .4f , screenHeight * .6f ),
+            new (screenWidth * .4f , screenHeight * .7f ),
+            new (screenWidth * .4f , screenHeight * .8f ),
+            new (screenWidth * .4f , screenHeight * .9f ),
+
+            new (screenWidth * .5f , screenHeight * .1f ),
+            new (screenWidth * .5f , screenHeight * .2f ),
+            new (screenWidth * .5f , screenHeight * .3f ),
+            new (screenWidth * .5f , screenHeight * .4f ),
+            new (screenWidth * .5f , screenHeight * .5f ),
+            new (screenWidth * .5f , screenHeight * .6f ),
+            new (screenWidth * .5f , screenHeight * .7f ),
+            new (screenWidth * .5f , screenHeight * .8f ),
+            new (screenWidth * .5f , screenHeight * .9f ),
+
+            new (screenWidth * .6f , screenHeight * .1f ),
+            new (screenWidth * .6f , screenHeight * .2f ),
+            new (screenWidth * .6f , screenHeight * .3f ),
+            new (screenWidth * .6f , screenHeight * .4f ),
+            new (screenWidth * .6f , screenHeight * .5f ),
+            new (screenWidth * .6f , screenHeight * .6f ),
+            new (screenWidth * .6f , screenHeight * .7f ),
+            new (screenWidth * .6f , screenHeight * .8f ),
+            new (screenWidth * .6f , screenHeight * .9f ),
+
+            new (screenWidth * .7f , screenHeight * .1f ),
+            new (screenWidth * .7f , screenHeight * .2f ),
+            new (screenWidth * .7f , screenHeight * .3f ),
+            new (screenWidth * .7f , screenHeight * .4f ),
+            new (screenWidth * .7f , screenHeight * .5f ),
+            new (screenWidth * .7f , screenHeight * .6f ),
+            new (screenWidth * .7f , screenHeight * .7f ),
+            new (screenWidth * .7f , screenHeight * .8f ),
+            new (screenWidth * .7f , screenHeight * .9f ),
+
+            new (screenWidth * .8f , screenHeight * .1f ),
+            new (screenWidth * .8f , screenHeight * .2f ),
+            new (screenWidth * .8f , screenHeight * .3f ),
+            new (screenWidth * .8f , screenHeight * .4f ),
+            new (screenWidth * .8f , screenHeight * .5f ),
+            new (screenWidth * .8f , screenHeight * .6f ),
+            new (screenWidth * .8f , screenHeight * .7f ),
+            new (screenWidth * .8f , screenHeight * .8f ),
+            new (screenWidth * .8f , screenHeight * .9f ),
+            
+            new (screenWidth * .9f , screenHeight * .1f ),
+            new (screenWidth * .9f , screenHeight * .2f ),
+            new (screenWidth * .9f , screenHeight * .3f ),
+            new (screenWidth * .9f , screenHeight * .4f ),
+            new (screenWidth * .9f , screenHeight * .5f ),
+            new (screenWidth * .9f , screenHeight * .6f ),
+            new (screenWidth * .9f , screenHeight * .7f ),
+            new (screenWidth * .9f , screenHeight * .8f ),
+            new (screenWidth * .9f , screenHeight * .9f ),            
+        };
 
         var camera = new Camera3D()
         {
@@ -25,29 +118,18 @@ internal sealed unsafe class Program
             Projection = CameraProjection.Perspective
         };
 
-        var planeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshPlane(20, 20, 3, 3));
+        var planeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshPlane(20, 20, 3, 3));    
 
         var greenCubeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshCube(3, 3, 3));
-        var greenCubePosition = new Vector3(-5, 2, 0);
-        var greenCubeSize = new Vector3(3, 3, 3);
-        var greenCubeBoundingBox = new BoundingBox(
-            greenCubePosition - greenCubeSize / 2,
-            greenCubePosition + greenCubeSize / 2
-        );
+        greenCubeModel.Transform = Raymath.MatrixTranslate(-5, 2, 0);
 
         var blueCubeModel = Raylib.LoadModelFromMesh(Raylib.GenMeshCube(3, 3, 3));
-        var blueCubePosition = new Vector3(5, 2, 0);
-        var blueCubeSize = new Vector3(3, 3, 3);
-        var blueCubeBoundingBox = new BoundingBox(
-            blueCubePosition - blueCubeSize / 2,
-            blueCubePosition + blueCubeSize / 2
-        );
+        blueCubeModel.Transform = Raymath.MatrixTranslate(5, 2, 0);
+
+        Raylib.SetMousePosition(screenWidth / 2, screenHeight / 2);
 
         while (!Raylib.WindowShouldClose())
         {
-            var greenCubeVisible = true;
-            var blueCubeVisible = true;
-
             Raylib.UpdateCamera(ref camera, CameraMode.Orbital);
             Raylib.BeginDrawing();
             {
@@ -57,40 +139,46 @@ internal sealed unsafe class Program
                     Raylib.DrawModel(planeModel, Vector3.Zero, 1, Color.Gray);
                     Raylib.DrawModelWires(planeModel, Vector3.Zero, 1, Color.LightGray);
 
-                    Raylib.DrawModel(greenCubeModel, greenCubePosition, 1, Color.Green);
-                    Raylib.DrawModelWires(greenCubeModel, greenCubePosition, 1, Color.Green);
+                    Raylib.DrawModel(greenCubeModel, Vector3.Zero, 1, Color.Green);
+                    Raylib.DrawModelWires(greenCubeModel, Vector3.Zero, 1, Color.Black);
 
-                    Raylib.DrawModel(blueCubeModel, blueCubePosition, 1, Color.Blue);
-                    Raylib.DrawModelWires(blueCubeModel, blueCubePosition, 1, Color.Blue);
-
-                    greenCubeVisible = IsModelVisible(camera, screenWidth, screenHeight, greenCubeModel);
-                    blueCubeVisible = IsModelVisible(camera, screenWidth, screenHeight, blueCubeModel);
+                    Raylib.DrawModel(blueCubeModel, Vector3.Zero, 1, Color.Blue);
+                    Raylib.DrawModelWires(blueCubeModel, Vector3.Zero, 1, Color.Black);
                 }
                 Raylib.EndMode3D();
 
-
-                if (greenCubeVisible)
+                if (IsBoundingBoxVisible(camera, cameraPositions, [greenCubeModel, blueCubeModel], greenCubeModel, "green cube"))
                 {
                     Raylib.DrawText("Green cube is visible", 10, 30, 30, Color.Green);
                     Raylib.TraceLog(TraceLogLevel.All, "Green cube is visible");
-                    Debug.Write("Green cube is visible");
                 }
                 else
                 {
                     Raylib.DrawText("Green cube is NOT visible", 10, 30, 30, Color.DarkGreen);
                     Raylib.TraceLog(TraceLogLevel.All, "Green cube is NOT visible");
-                    Debug.Write("Green cube is NOT visible");
                 }
 
-                if (blueCubeVisible)
+                if (IsBoundingBoxHovered(camera, greenCubeModel))
                 {
-                    Raylib.DrawText("Blue cube is visible", 10, 90, 30, Color.Blue);
+                    Raylib.DrawText("Green cube is hovered", 10, 60, 30, Color.DarkGreen);
+                    Raylib.TraceLog(TraceLogLevel.All, "Green cube is hovered");
+                }
+
+                if (IsBoundingBoxVisible(camera, cameraPositions, [greenCubeModel, blueCubeModel], blueCubeModel, "blue cube"))
+                {
+                    Raylib.DrawText("Blue cube is visible", 10, 120, 30, Color.Blue);
                     Raylib.TraceLog(TraceLogLevel.All, "Blue cube is visible");
                 }
                 else
                 {
-                    Raylib.DrawText("Blue cube is NOT visible", 10, 90, 30, Color.DarkBlue);
+                    Raylib.DrawText("Blue cube is NOT visible", 10, 120, 30, Color.DarkBlue);
                     Raylib.TraceLog(TraceLogLevel.All, "Blue cube is NOT visible");
+                }
+
+                if (IsBoundingBoxHovered(camera, blueCubeModel))
+                {
+                    Raylib.DrawText("Blue cube is hovered", 10, 150, 30, Color.DarkBlue);
+                    Raylib.TraceLog(TraceLogLevel.All, "Blue cube is hovered");
                 }
 
                 Raylib.DrawFPS(10, 1);
@@ -105,12 +193,52 @@ internal sealed unsafe class Program
         Raylib.CloseWindow();
     }
 
-    private static bool IsModelVisible(Camera3D camera, int screenWidth, int screenHeight, Model model)
+    private static bool IsBoundingBoxVisible(Camera3D camera, Vector2[] cameraPositions, Model [] allModels, Model targetModel, string id)
     {
-        var ray = Raylib.GetScreenToWorldRay(new Vector2 (screenWidth / 2, screenHeight / 2), camera);
-        var rayCollision = Raylib.GetRayCollisionMesh(ray, model.Meshes[0], model.Transform);
+        foreach (var cameraPosition in cameraPositions)
+        {
+            var ray = Raylib.GetScreenToWorldRay(cameraPosition, camera);
+            var closestModel = default(Model);
+            var closestCollision = (RayCollision?)null;
+
+            foreach (var model in allModels)
+            {
+                var boundingBox = Raylib.GetModelBoundingBox(model);
+                var collision = Raylib.GetRayCollisionBox(ray, boundingBox);
+
+                if (collision.Hit && (collision.Distance < closestCollision?.Distance || closestCollision is null))
+                {
+                    Raylib.DrawBoundingBox(boundingBox, Color.Purple);
+                    closestCollision = collision;
+                    closestModel = model;
+                }
+            }
+
+            if (closestCollision is not null && closestModel.Equals(targetModel))
+            {
+                Raylib.TraceLog(TraceLogLevel.All, $"{id} is visible at position {ray.Position} ({closestCollision})");
+                Raylib.DrawText("X", (int)cameraPosition.X, (int)cameraPosition.Y, 10, Color.DarkGreen);
+
+                return true;
+            }
+            else
+            {
+                Raylib.DrawText("X", (int)cameraPosition.X, (int)cameraPosition.Y, 10, Color.Red);
+            }
+        }
+
+        return false;
+    }
+
+    private static bool IsBoundingBoxHovered(Camera3D camera, Model model)
+    {
+        var ray = Raylib.GetScreenToWorldRay(Raylib.GetMousePosition(), camera);
+        var boundingBox = Raylib.GetModelBoundingBox(model);
+
+        var rayCollision = Raylib.GetRayCollisionBox(ray, boundingBox);
         if (rayCollision.Hit)
         {
+            Raylib.DrawBoundingBox(boundingBox, Color.Purple);
             return true;
         }
         return false;
