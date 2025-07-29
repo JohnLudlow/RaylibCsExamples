@@ -19,6 +19,7 @@
   </Folder>
   <Folder Name="/Community/Shaders/">
     <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicLighting/RaylibCsExamples.Community.Shaders.BasicLighting.csproj" />
+    <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicPbr/RaylibCsExamples.Community.Shaders.BasicPbr.csproj" />
   </Folder>
   <Folder Name="/Local/" />
   <Folder Name="/Local/Objects/">
