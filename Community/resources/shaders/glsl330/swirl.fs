@@ -14,8 +14,7 @@ out vec4 finalColor;
 // NOTE: Add here your custom variables
 
 // NOTE: Render size values should be passed from code
-const float renderWidth = 800;
-const float renderHeight = 450;
+uniform vec2 texSize = vec2(1600, 900);
 
 float radius = 250.0;
 float angle = 0.8;
@@ -24,7 +23,6 @@ uniform vec2 center = vec2(200.0, 200.0);
 
 void main()
 {
-    vec2 texSize = vec2(renderWidth, renderHeight);
     vec2 tc = fragTexCoord*texSize;
     tc -= center;
 
