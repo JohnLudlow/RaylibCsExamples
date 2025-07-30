@@ -16,6 +16,7 @@
     <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.AnimationDemo/RaylibCsExamples.Community.Core.Models.AnimationDemo.csproj" />
     <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.CubicmapDemo/RaylibCsExamples.Community.Core.Models.CubicmapDemo.csproj" />
     <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.SolarSystem/RaylibCsExamples.Community.Core.Models.SolarSystem.csproj" />
+    <Project Path="Community/Models/RaylibCsExamples.Community.Core.Models.MeshPicking/RaylibCsExamples.Community.Core.Models.MeshPicking.csproj" />
   </Folder>
   <Folder Name="/Community/Shaders/">
     <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicLighting/RaylibCsExamples.Community.Shaders.BasicLighting.csproj" />
