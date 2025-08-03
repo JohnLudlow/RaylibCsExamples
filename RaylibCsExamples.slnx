@@ -22,6 +22,7 @@
     <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicLighting/RaylibCsExamples.Community.Shaders.BasicLighting.csproj" />
     <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.BasicPbr/RaylibCsExamples.Community.Shaders.BasicPbr.csproj" />
     <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.CustomUniform/RaylibCsExamples.Community.Shaders.CustomUniform.csproj" />
+    <Project Path="Community/Shaders/RaylibCsExamples.Community.Shaders.Raymarching/RaylibCsExamples.Community.Shaders.Raymarching.csproj" />
   </Folder>
   <Folder Name="/Local/" />
   <Folder Name="/Local/Objects/">
