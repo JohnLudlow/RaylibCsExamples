@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="rlImgui-cs" Version="3.2.0" />
+    <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
+
+    <Content Include="../../../resources/parrots.png" Link="Resources\parrots.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+
+    
+    <Content Include="../../../resources//fonts/DejaVuSerif-Bold.ttf" Link="Resources/Fonts/DejaVuSerif-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

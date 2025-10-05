@@ -35,6 +35,14 @@ dotnet_style_qualification_for_method = false:suggestion
 dotnet_style_qualification_for_property = false:suggestion
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
 
+[*.{cs,vb}]
+# Don't warn about namespace style
+dotnet_diagnostic.IDE0160.severity = suggestion
+dotnet_diagnostic.IDE0161.severity = suggestion
+
+# Don't warn about explicit initiialition to default value
+dotnet_diagnostic.CA1805.severity = suggestion
+
 # ReSharper properties
 resharper_autodetect_indent_settings = true
 resharper_use_indent_from_vs = false
