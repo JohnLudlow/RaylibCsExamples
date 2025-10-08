@@ -18,7 +18,8 @@ Raylib.SetTargetFPS(144);
 
 rlImGui.SetupUserFonts += (ImGuiIOPtr imGuiIo) =>
 {
-    DejaFont = imGuiIo.Fonts.AddFontFromFileTTF("Resources/Fonts/DejaVuSerif-Bold.ttf", 16, null, imGuiIo.Fonts.GetGlyphRangesDefault());
+    imGuiIo.FontGlobalScale = 2.0f;
+    DejaFont = imGuiIo.Fonts.AddFontFromFileTTF("Resources/Fonts/DejaVuSerif-Bold.ttf", 24, null, imGuiIo.Fonts.GetGlyphRangesDefault());
 };
 
 rlImGui.Setup(

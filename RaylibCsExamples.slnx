@@ -35,4 +35,7 @@
   <Folder Name="/Local/Objects/">
     <Project Path="Local/Objects/RaylibCsExamples.Local.Objects.ObjectOcclusionTest/RaylibCsExamples.Local.Objects.ObjectOcclusionTest.csproj" />
   </Folder>
+  <Folder Name="/Local/UserInterface/">
+    <Project Path="Local/UserInterface/ImGuiSample/ImGuiSample.csproj" />
+  </Folder>
 </Solution>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <RootNamespace>RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample</RootNamespace>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
