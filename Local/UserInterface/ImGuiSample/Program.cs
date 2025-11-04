@@ -1,6 +1,6 @@
 ﻿using ImGuiNET;
 using Raylib_cs;
-using RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
+using RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.ECS;
 using RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 using rlImGui_cs;
 
@@ -21,10 +21,39 @@ rlImGui.Setup(
     enableDocking: true
 );
 
+var rootScene = new Scene() { RootEntities = {
+    new Entity()
+    {
+        Name = "Entity 1",
+        Components =
+        {
+            new MeshComponent()
+            {
+                Mesh = Raylib.GenMeshCube(1.0f, 1.0f, 1.0f)
+            }
+        },
+    },
+} };
 
 while (!Raylib.WindowShouldClose())
 {
+    Setup(rootScene);
+    Update(rootScene);
+    Draw();
+}
 
+static void Setup(Scene scene)
+{
+    scene.Setup();
+}
+
+static void Update(Scene scene)
+{
+    scene.Update();
+}
+
+static void Draw()
+{
     Raylib.BeginDrawing();
     {
         Raylib.ClearBackground(Color.RayWhite);
@@ -40,7 +69,7 @@ static void DrawUserInterface()
 {
     rlImGui.Begin();
     {
-        var testWindow = new TestWindow();        
+        var testWindow = new TestWindow();
         testWindow.Show();
     }
     rlImGui.End();
