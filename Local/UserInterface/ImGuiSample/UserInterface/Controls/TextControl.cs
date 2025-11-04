@@ -1,7 +1,4 @@
-using System;
-using System.Numerics;
-
-namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
+namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 
 public class TextControl : ImGuiControl
 {

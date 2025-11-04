@@ -16,7 +16,7 @@ Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint | ConfigFlags.VSyncHint | ConfigFla
 Raylib.InitWindow(1280, 800, "raylib-Extras-cs [ImGui] example - editor ImGui Demo");
 Raylib.SetTargetFPS(144);
 
-rlImGui.SetupUserFonts += (ImGuiIOPtr imGuiIo) =>
+rlImGui.SetupUserFonts += imGuiIo =>
 {
     imGuiIo.FontGlobalScale = 2.0f;
     DejaFont = imGuiIo.Fonts.AddFontFromFileTTF("Resources/Fonts/DejaVuSerif-Bold.ttf", 24, null, imGuiIo.Fonts.GetGlyphRangesDefault());

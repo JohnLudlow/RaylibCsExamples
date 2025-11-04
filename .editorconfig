@@ -37,7 +37,7 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 
 [*.{cs,vb}]
 # Don't warn about namespace style
-dotnet_diagnostic.IDE0160.severity = suggestion
+dotnet_diagnostic.IDE0160.severity = none
 dotnet_diagnostic.IDE0161.severity = suggestion
 
 # Don't warn about explicit initiialition to default value

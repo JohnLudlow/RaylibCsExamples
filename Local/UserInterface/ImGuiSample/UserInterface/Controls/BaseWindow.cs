@@ -1,7 +1,6 @@
-using System;
 using Raylib_cs;
 
-namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
+namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 
 public abstract class BaseWindow(string title) : ImGuiContainerControl
 {

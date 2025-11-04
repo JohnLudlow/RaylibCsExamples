@@ -1,7 +1,4 @@
-using System;
-using RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
-
-namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample;
+namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 
 public class ImGuiContainerControl : ImGuiControl
 {
@@ -13,7 +10,7 @@ public class ImGuiContainerControl : ImGuiControl
         {
             control.Dispose();
         }
-
+        
         GC.SuppressFinalize(this);
     }
 

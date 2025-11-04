@@ -1,6 +1,4 @@
-using System;
-
-namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
+namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 
 public abstract class ImGuiControl : IDisposable
 {

@@ -1,8 +1,6 @@
-using System;
 using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
 
-namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
+namespace RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 
 public class ImGuiPanel : ImGuiContainerControl
 {
@@ -27,5 +25,16 @@ public class ImGuiPanel : ImGuiContainerControl
                 ImGuiNET.ImGui.EndChild();
             }
         }
+
+        base.Show();
+    }
+
+    public override void Update()
+    {
+        foreach (var control in Controls)
+        {
+            control.Update();
+        }
+        base.Update();
     }
 }

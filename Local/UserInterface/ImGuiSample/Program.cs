@@ -1,6 +1,7 @@
 ﻿using ImGuiNET;
 using Raylib_cs;
 using RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface;
+using RaylibCsExamples.Community.Core.UserInterface.ImGui.ImGuiEditorSample.UserInterface.Controls;
 using rlImGui_cs;
 
 var DejaFont = default(ImFontPtr);
@@ -20,23 +21,27 @@ rlImGui.Setup(
     enableDocking: true
 );
 
-var testWindow = new TestWindow();
 
 while (!Raylib.WindowShouldClose())
 {
-    testWindow.Update();
 
     Raylib.BeginDrawing();
     {
         Raylib.ClearBackground(Color.RayWhite);
 
-        rlImGui.Begin();
-        {
-            testWindow.Show();
-        }
-        rlImGui.End();
+        DrawUserInterface();
 
         Raylib.DrawFPS(10, 10);
     }
     Raylib.EndDrawing();
+}
+
+static void DrawUserInterface()
+{
+    rlImGui.Begin();
+    {
+        var testWindow = new TestWindow();        
+        testWindow.Show();
+    }
+    rlImGui.End();
 }
