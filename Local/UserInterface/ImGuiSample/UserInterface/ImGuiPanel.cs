@@ -18,15 +18,14 @@ public class ImGuiPanel : ImGuiContainerControl
     {
         if (ImGuiNET.ImGui.CollapsingHeader(PanelHeader, ImGuiNET.ImGuiTreeNodeFlags.DefaultOpen))
         {
-            ImGuiNET.ImGui.BeginChild(PanelHeader + "Child", new Vector2(ImGuiNET.ImGui.GetContentRegionAvail().X, 120), ImGuiNET.ImGuiChildFlags.Borders);
+            foreach (var control in Controls)
             {
-                ImGuiNET.ImGui.Text($"This is the {PanelHeader} panel.");
+                ImGuiNET.ImGui.BeginChild($"{PanelHeader}/{control.Name}", new Vector2(ImGuiNET.ImGui.GetContentRegionAvail().X, 120), ImGuiNET.ImGuiChildFlags.Borders);
+                {
+                    control.Show();
+                }
+                ImGuiNET.ImGui.EndChild();
             }
-            ImGuiNET.ImGui.EndChild();
         }
-    }
-
-    public override void Update()
-    {
     }
 }
